@@ -24,5 +24,6 @@ def backtracking_template(choices, other_params):
          # edit choice or other_params to try out the choice
          if is_valid(choice) && backtracking_template(choices, other_params):
             return success 
+         # undo that choice if necessary
    return failure
 
