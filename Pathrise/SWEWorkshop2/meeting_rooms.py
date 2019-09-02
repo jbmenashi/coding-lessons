@@ -21,3 +21,22 @@ def find_avail_room(rooms, meeting):
 
 
 # you could use a Heap to look up the room with the smallest end time
+
+def min_rooms(times):
+   times = sort_by_start_times(times)
+   minHeap = MinHeap()
+   minHeap.push(times[0]["end"])
+   result = 1
+   for idx in range(1, len(times)):
+      meeting = times[idx]
+      if meeting["start"] >= minHeap.peek() # if the new start time is greater than the end time (the top of the heap), add it to the heap
+         minHeap.pop() # if it's greater, then you made a new top of the heap and DONT add to the heap
+      minHeap.push(meeting["end"])
+
+      if result < len(minHeap):
+         result = len(minHeap)
+
+   return result
+
+   # pushing and popping into a heap is log(n) time, peeking is constant
+   # so is O(n * logn) where n is the length of meeting times
