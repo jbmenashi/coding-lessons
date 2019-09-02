@@ -40,3 +40,7 @@ def min_rooms(times):
 
    # pushing and popping into a heap is log(n) time, peeking is constant
    # so is O(n * logn) where n is the length of meeting times
+
+import operator
+def sort_by_start_times(times):
+   return times.sort(key = operator.itemgetter(0))
