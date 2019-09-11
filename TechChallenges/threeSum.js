@@ -1,13 +1,10 @@
 const threeSum = (arr) => {
     let sorted = arr.sort((a, b) => a - b)
-    // console.log(sorted)
     for (let i = 0; i < sorted.length; i++) { // -3
         for (let j = i; j < sorted.length ; j++) { // 3
             let sum = sorted[i] + sorted[j] // 0
-            // console.log(sum)
             let target = 0 - sum // target = 0
             let foundEl = binarySearch(sorted, target)
-            // console.log('foundEl', foundEl)
             if (foundEl || foundEl === 0) {
                 return [sorted[i], sorted[j], foundEl]
             }
