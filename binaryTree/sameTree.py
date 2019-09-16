@@ -30,28 +30,30 @@ Output: false
 # if the left and right subtrees are identical AND the values of the current node are the same, return True, if not return False
 
 
-class Solution(object):
-    def isSameTree(self, p, q):
-        # Base Case
-        if not p and not q:
-            return True
-        '''
-        0 0 => true
-        0 1 => false
-        1 0 => false
-        '''
-        # Base Case
-        # p or q
-        if not p or not q:
-            return False
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
 
-        # OR:
-           # if not p and q: return False
-           # if not q and p: return False
 
-        # Request
-        left = self.isSameTree(p.left, q.left)
-        right = self.isSameTree(p.right, q.right)
+def isSameTree(p, q):
+    if not p and not q:
+        return True
+    if not p or not q:
+        return False
 
-        # Return
-        return left is True and right is True and p.val == q.val
+    left = isSameTree(p.left, q.left)
+    right = isSameTree(p.right, q.right)
+
+    return left is True and right is True and p.data == q.data
+
+
+test1 = Node(1)
+test1.left = Node(2)
+test1.right = Node(3)
+test2 = Node(1)
+test2.left = Node(2)
+test2.right = Node(4)
+
+isSameTree(test1, test2) # false

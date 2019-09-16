@@ -26,7 +26,6 @@ def isBalanced(r):
     getHeight(r)
     return r.isBalanced
 
-# Driver function to test the above function 
 root = Node(3) 
 root.left = Node(9) 
 root.right = Node(20) 
