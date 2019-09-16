@@ -14,10 +14,7 @@ function countIslands(mat) {
 }
 
 function checkIsland(row, col, mat) {
-   if (!mat[row] || !mat[row][col]) {
-      return
-   }
-   if (mat[row][col] !== 1) {
+   if (!mat[row] || !mat[row][col] || mat[row][col] !== 1) {
       return
    }
 

@@ -7,17 +7,33 @@
     /  \
    15   7
 
-class Solution(object):
-   def isBalanced(self, root):
-      self.isBalanced = True
-      self.getHeight(root)
-      return self.isBalanced
+class Node: 
+    def __init__(self, data): 
+        self.data = data 
+        self.left = None
+        self.right = None
+  
+def getHeight(r):
+    if not r: return 0
+    left = getHeight(r.left)
+    right = getHeight(r.right)
+    if abs(left - right) > 1: 
+        r.isBalanced = False
+    return max(left, right) + 1
 
-   def getHeight(self, root):
-      if not root:
-         return 0
-      left = self.getHeight(root.left)
-      right = self.getHeight(root.right)
-      if abs(left - right) > 1:
-         self.isBalanced = False
-      return max(left, right) + 1
+def isBalanced(r):
+    r.isBalanced = True
+    getHeight(r)
+    return r.isBalanced
+
+# Driver function to test the above function 
+root = Node(3) 
+root.left = Node(9) 
+root.right = Node(20) 
+root.right.left = Node(15) 
+root.right.right = Node(7) 
+
+if isBalanced(root): 
+    print("Tree is balanced") 
+else: 
+    print("Tree is not balanced") 
