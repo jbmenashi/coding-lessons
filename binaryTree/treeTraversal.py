@@ -23,6 +23,7 @@ def preTraversal(root):
    preTraversal(root.right) # then the right side when there's no more lefts
 
 #In-Order Traversal - # D B E A F C G
+# you can use this for a binary search tree
 def inTraversal(root): 
    if not root:
       return
